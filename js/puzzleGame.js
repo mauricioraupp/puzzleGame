@@ -48,6 +48,7 @@ function showNotify() {
 
 function drag(event){
   dragId = event.target.id
+
   console.log(dragId)
   event.dataTransfer.setData('text', dragId);
 }
@@ -62,6 +63,7 @@ function drop(event){
   console.log(dropId)
   let data = event.dataTransfer.getData('text');
   event.target.appendChild(document.getElementById(data));
+  checkForMatch()
 }
 
 onload = function(){
@@ -77,8 +79,10 @@ onload = function(){
 
 
 function checkForMatch(){
-  let isMatch = dragId.split("block") === dropId.split("box");
-  isMatch ? disableCards() : unflipCards();
+  let isMatch = dragId.split("block")[1] === dropId.split("box")[1];
+  if(isMatch){
+    scoreCounter()
+  }
 };
 
 let unlockedLevel = 1
@@ -93,15 +97,13 @@ function checkCurrentLevel(documentName){
     unlockedLevel = 5
   } else if (documentName == "Quebra-cabeça: Nível 5"){
     unlockedLevel = 5
-  } else {
-    throw(err)
   }
 }
 
 async function scoreCounter(){
   score += 1;
   if (score === levelMaxPoints) {
-    checkCurrentLevel(levelMaxPoints);
+    checkCurrentLevel(documentTitle);
     showNotify();
     scoreAppear();
   }
