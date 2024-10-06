@@ -5,14 +5,19 @@ let levelMaxPoints;
 let dragId;
 let dropId;
 
+const buttonBack = document.querySelector("#button-back");
 
-(function checkDocument(){
+buttonBack.addEventListener('click', function(){
+  window.location.href = '../pages/minigames.html'
+});
+
+(function checkDocument() {
   if (documentTitle === "Quebra-cabeça: Nível 1") {
     levelMaxPoints = 4;
-  } else if (documentTitle === "Quebra-cabeça: Nível 2" || "Quebra-cabeça: Nível 3" || "Quebra-cabeça: Nível 4") {
-    levelMaxPoints = 5;
+  } else if (documentTitle === "Quebra-cabeça: Nível 2" || documentTitle === "Quebra-cabeça: Nível 3" || documentTitle === "Quebra-cabeça: Nível 4") {
+    levelMaxPoints = 9;
   } else if (documentTitle === "Quebra-cabeça: Nível 5") {
-    levelMaxPoints = 6;
+    levelMaxPoints = 16;
   }
 })();
 
@@ -20,7 +25,7 @@ let notify = document.createElement('div');
 
 function showNotify() {
   notify.textContent = `Nível ${unlockedLevel} desbloqueado!`
-  if (levelMaxPoints == 5) {
+  if (levelMaxPoints == 16) {
     notify.textContent = 'Parabéns! Você venceu todos os níveis!'
   }
   notify.style.fontFamily = 'Inter'
@@ -81,6 +86,7 @@ onload = function(){
 function checkForMatch(){
   let isMatch = dragId.split("block")[1] === dropId.split("box")[1];
   if(isMatch){
+    score = 0
     scoreCounter()
   }
 };
@@ -101,11 +107,16 @@ function checkCurrentLevel(documentName){
 }
 
 async function scoreCounter(){
-  score += 1;
-  if (score === levelMaxPoints) {
-    checkCurrentLevel(documentTitle);
-    showNotify();
-    scoreAppear();
+  for (let i = 1; i < (levelMaxPoints + 1); i++){
+    if (document.querySelector(`#box${i}`).contains(document.querySelector(`#block${i}`))){
+      score += 1;
+      console.log(score)
+      if (score === levelMaxPoints) {
+        checkCurrentLevel(documentTitle);
+        showNotify();
+        scoreAppear();
+      }
+    }
   }
 };
 

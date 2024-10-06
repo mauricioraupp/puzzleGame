@@ -5,31 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quebra-cabeça: Nível 1</title>
   <link rel="stylesheet" href="../css/levels.css">
+  <link rel="stylesheet" href="../css/levelOne.css">
 </head>
 <body>
   <div id="back"></div>
 
-  <div class="drag" id="drag">
-    <div class="dragBox">
-      <div class="images" draggable="true" ondragstart="drag(event)" id="block1" style="--img:url(../images/levelOne/parque1.png);"></div>
+  <main>
+    <div class="drag" id="drag">
+      <div class="dragBox">
+        <div class="images" draggable="true" ondragstart="drag(event)" id="block1" style="--img:url(../images/levelOne/parque1.png);"></div>
+      </div>
+      <div class="dragBox">
+        <div class="images" draggable="true" ondragstart="drag(event)" id="block2" style="--img:url(../images/levelOne/parque2.png);"></div>
+      </div>
+      <div class="dragBox">
+        <div class="images" draggable="true" ondragstart="drag(event)" id="block3" style="--img:url(../images/levelOne/parque3.png);"></div>
+      </div>
+      <div class="dragBox">
+        <div class="images" draggable="true" ondragstart="drag(event)" id="block4" style="--img:url(../images/levelOne/parque4.png);"></div>
+      </div>
     </div>
-    <div class="dragBox">
-      <div class="images" draggable="true" ondragstart="drag(event)" id="block2" style="--img:url(../images/levelOne/parque2.png);"></div>
-    </div>
-    <div class="dragBox">
-      <div class="images" draggable="true" ondragstart="drag(event)" id="block3" style="--img:url(../images/levelOne/parque3.png);"></div>
-    </div>
-    <div class="dragBox">
-      <div class="images" draggable="true" ondragstart="drag(event)" id="block4" style="--img:url(../images/levelOne/parque4.png);"></div>
-    </div>
-  </div>
 
-  <div class="board">
-    <div class="dropBox" id="box1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    <div class="dropBox" id="box2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    <div class="dropBox" id="box3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    <div class="dropBox" id="box4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-  </div>
+    <div class="board">
+      <div class="dropBox" id="box1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="dropBox" id="box2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="dropBox" id="box3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="dropBox" id="box4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+  </main>
 
   <button class="reset" onClick="window.location.reload()">Recomeçar</button>
 
@@ -38,6 +41,7 @@
       <img class="v-img" src="../images/vitoria.png">
       <article>
         <button id="button-back">Voltar</button>
+        <button id="button-reload" onClick="window.location.reload()">Jogar novamente</button>
         <a href="../html/levelTwo.html"><button>Próxima fase</button></a>
       </article>
     </div>

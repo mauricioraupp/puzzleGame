@@ -10,7 +10,6 @@ body{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  gap: 50px;
   background-color: #192F44;
 }
 #back{
@@ -21,15 +20,19 @@ body{
   height: 100vh;
   width: 100vw;
 }
+main{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
 
 .drag{
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
   flex-wrap: wrap;
-  width: clamp(200px, 22vw, 300px);
-  height: clamp(200px, 22vw, 300px);
   place-items: center;
   gap: 10px;
   cursor: grab;
@@ -73,17 +76,12 @@ body{
 .board{
   position: relative;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
 .dropBox{
   position: relative;
-  width: clamp(130px, 18vw, 200px);
-  height: clamp(130px, 18vw, 200px);
   background: rgba(0, 0, 0, 0.35);
 }
-
-
 
 #back-screen{
   position: absolute;
@@ -115,8 +113,8 @@ body{
 #done-screen img{
   position: absolute;
   top: -30%;
-  height: 50vh;
-  width: 50vh;
+  height: clamp(330px, 30vw, 450px);
+  width: clamp(330px, 30vw, 450px);
 }
 
 #done-screen article{
@@ -162,15 +160,22 @@ body{
   body{
     flex-direction: column;
   }
+  main{
+    gap: 30px;
+  }
 
   #done-screen{
-    height: 50vh;
-    width: 60vw;
+    width: 70vw;
   }
   #done-screen img{
     top: -20%;
-    height: 35vh;
-    width: 35vh;
+  }
+
+  .drag{
+    gap: 8px;
+  }
+  .board{
+    gap: 8px;
   }
 
   .bi-gear-fill{
